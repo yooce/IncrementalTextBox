@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncrementalTextBox", "IncrementalTextBox\IncrementalTextBox.csproj", "{3A9E9468-AC92-49AE-BF55-8D9BDA31160F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IncrementalTextBoxSample", "IncrementalTextBoxSample\IncrementalTextBoxSample.csproj", "{8DF158BD-CBFC-4A77-9791-82FCD5E74C16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A9E9468-AC92-49AE-BF55-8D9BDA31160F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A9E9468-AC92-49AE-BF55-8D9BDA31160F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A9E9468-AC92-49AE-BF55-8D9BDA31160F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A9E9468-AC92-49AE-BF55-8D9BDA31160F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF158BD-CBFC-4A77-9791-82FCD5E74C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF158BD-CBFC-4A77-9791-82FCD5E74C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF158BD-CBFC-4A77-9791-82FCD5E74C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF158BD-CBFC-4A77-9791-82FCD5E74C16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {463D9502-1697-480B-A91B-650B3F02944C}
+	EndGlobalSection
+EndGlobal
