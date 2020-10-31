@@ -72,6 +72,7 @@ namespace MagicalNuts
 			{
 				_CandidateListViewItemDictionary = value;
 				DictionarySet = true;
+				Enabled = true;
 			}
 		}
 
@@ -178,6 +179,8 @@ namespace MagicalNuts
 			// 既定のデリゲート登録
 			_KeysForDictionary = DefaultKeysForDictionary;
 			_Match = DefaultMatch;
+
+			Enabled = false;
 		}
 
 		/// <summary>
@@ -339,6 +342,14 @@ namespace MagicalNuts
 
 				// 入力文字列が前回と同じなら何もしない
 				if (Text == PreviouseText) return;
+
+				// キーが辞書に存在しかければ隠す
+				if (!_CandidateListViewItemDictionary.ContainsKey(GetInputTextKey()))
+				{
+					CandidateListView.Hide();
+					CandidateListView.Items.Clear();
+					return;
+				}
 
 				// 辞書から候補リスト項目を引く
 				List<CandidateListViewItem> values = _CandidateListViewItemDictionary[GetInputTextKey()];
