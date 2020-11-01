@@ -161,7 +161,7 @@ namespace MagicalNuts
 			// 候補リスト作成
 			CandidateListView = new ListView();
 			CandidateListView.Visible = false;
-			CandidateListView.View = View.SmallIcon;
+			CandidateListView.View = View.List;
 			CandidateListView.MultiSelect = false;
 			CandidateListView.Height = 200;
 
