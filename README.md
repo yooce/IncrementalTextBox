@@ -6,7 +6,7 @@
 
 # Requirement
 
-.NET Framework 4.6
+.NET Framework 4.6.1
 
 # Basic Usage
 
