@@ -355,6 +355,11 @@ namespace MagicalNuts
 			// 候補リスト項目が１件に絞れなければここまで
 			if (items.Length != 1) return;
 
+			// TextChangedイベントを外した上で、テキストボックスに候補名を入れる
+			TextChanged -= new EventHandler(textBox_TextChanged);
+			Text = items[0].Text;
+			TextChanged += new EventHandler(textBox_TextChanged);
+
 			// 決定
 			DecidedCandidate = items[0].Candidate;
 			Decided?.Invoke(this, new IncrementalTextBoxEventArgs(DecidedCandidate));
