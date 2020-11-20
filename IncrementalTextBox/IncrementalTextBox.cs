@@ -323,6 +323,43 @@ namespace MagicalNuts
 			CandidateListView.Items.Clear();
 		}
 
+		/// <summary>
+		/// テキストを設定しEnterキーを押したことにする
+		/// </summary>
+		/// <param name="text">テキスト</param>
+		public void SetTextAndEnter(string text)
+		{
+			// TextChangedイベントを外した上で、テキストボックスに候補名を入れる
+			TextChanged -= new EventHandler(textBox_TextChanged);
+			Text = text;
+			TextChanged += new EventHandler(textBox_TextChanged);
+
+			// Enterキー押下
+			HandleKeyEnter();
+		}
+
+		/// <summary>
+		/// Enterキー押下を処理します。
+		/// </summary>
+		public void HandleKeyEnter()
+		{
+			// 入力文字列が無ければ何もしない
+			if (string.IsNullOrEmpty(Text)) return;
+
+			// 候補リスト項目の辞書を引く
+			List<CandidateListViewItem> values = _CandidateListViewItemDictionary[GetInputTextKey()];
+
+			// 候補リスト項目を抽出
+			CandidateListViewItem[] items = values.Where(value => _Match(Text, value.Candidate)).ToArray();
+
+			// 候補リスト項目が１件に絞れなければここまで
+			if (items.Length != 1) return;
+
+			// 決定
+			DecidedCandidate = items[0].Candidate;
+			Decided?.Invoke(this, new IncrementalTextBoxEventArgs(DecidedCandidate));
+		}
+
 		#region テキストボックス用イベントハンドラ
 
 		/// <summary>
@@ -435,21 +472,7 @@ namespace MagicalNuts
 				// Enterキー
 				case Keys.Enter:
 					{
-						// 入力文字列が無ければ何もしない
-						if (string.IsNullOrEmpty(Text)) return;
-
-						// 候補リスト項目の辞書を引く
-						List<CandidateListViewItem> values = _CandidateListViewItemDictionary[GetInputTextKey()];
-
-						// 候補リスト項目を抽出
-						CandidateListViewItem[] items = values.Where(value => _Match(Text, value.Candidate)).ToArray();
-
-						// 候補リスト項目が１件に絞れなければここまで
-						if (items.Length != 1) return;
-
-						// 決定
-						DecidedCandidate = items[0].Candidate;
-						Decided?.Invoke(this, new IncrementalTextBoxEventArgs(DecidedCandidate));
+						HandleKeyEnter();
 						break;
 					}
 				// ↑キー/↓キー
